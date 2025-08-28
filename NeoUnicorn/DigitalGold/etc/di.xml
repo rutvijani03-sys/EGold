@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="NeoUnicornDigitalGoldGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="collectionFactory" xsi:type="object">NeoUnicorn\DigitalGold\Model\ResourceModel\Record\CollectionFactory</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="string">mui/index/render</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="digitalgold_record_listing_data_source" xsi:type="string">NeoUnicorn\DigitalGold\Model\ResourceModel\Record\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="NeoUnicornDigitalGoldTransactionGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+    <arguments>
+        <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+        <argument name="requestFieldName" xsi:type="string">id</argument>
+        <argument name="collectionFactory" xsi:type="object">NeoUnicorn\DigitalGold\Model\ResourceModel\Transaction\CollectionFactory</argument>
+    </arguments>
+</virtualType>
+
+<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+        <argument name="collections" xsi:type="array">
+            <item name="digitalgold_transaction_listing_data_source" xsi:type="string">NeoUnicorn\DigitalGold\Model\ResourceModel\Transaction\Collection</item>
+        </argument>
+    </arguments>
+</type>
+
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="neounicorn" translate="label" sortOrder="100">
+            <label>NeoUnicorn</label>
+        </tab>
+        <section id="gold_price" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Gold Price Api</label>
+            <tab>neounicorn</tab>
+            <resource>NeoUnicorn_DigitalGold::config</resource>
+            <group id="fields" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gold Price Access Token</label>
+                <field id="gold_access_token" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Access Token</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

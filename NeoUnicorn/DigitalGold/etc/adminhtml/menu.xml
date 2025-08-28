@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework/Menu/etc/menu.xsd">
+    <menu>
+        <add id="NeoUnicorn_DigitalGold::digitalgold" title="Digital Gold" module="NeoUnicorn_DigitalGold"
+             sortOrder="10" resource="NeoUnicorn_DigitalGold::digitalgold"/>
+        <add id="NeoUnicorn_DigitalGold::records" title="Gold Records" module="NeoUnicorn_DigitalGold"
+             sortOrder="20" parent="NeoUnicorn_DigitalGold::digitalgold" action="digitalgold/record/index"
+             resource="NeoUnicorn_DigitalGold::records"/>
+        <add id="NeoUnicorn_DigitalGold::sellrequest" title="Gold Sell Request" module="NeoUnicorn_DigitalGold"
+             sortOrder="20" parent="NeoUnicorn_DigitalGold::digitalgold" action="digitalgold/sell/index"
+             resource="NeoUnicorn_DigitalGold::sellrequest"/>
+    </menu>
+</config>

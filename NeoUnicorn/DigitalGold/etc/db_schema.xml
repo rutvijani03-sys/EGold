@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="digital_gold_transactions" resource="default" engine="innodb" comment="Digital Gold Transactions">
+        <column name="entity_id" xsi:type="int" nullable="false" identity="true" unsigned="true" comment="Entity Id"/>
+        <column name="customer_id" xsi:type="int" nullable="false" unsigned="true" comment="Customer ID"/>
+        <column name="product_id" xsi:type="int" nullable="false" unsigned="true" comment="Product ID"/>
+        <column name="amount" xsi:type="decimal" precision="12" scale="4" nullable="false" default="0.0000" comment="Amount"/>
+        <column name="quantity" xsi:type="decimal" precision="12" scale="4" nullable="false" default="0.0000" comment="Quantity"/>
+        <column name="order_id" xsi:type="int" nullable="false" unsigned="true" comment="Order Id"/>
+        <column xsi:type="text" name="transaction_note" nullable="false" comment="Transaction Note"/>
+        <column xsi:type="text" name="action" nullable="true" comment="Transaction Action"/>
+        <column xsi:type="text" name="status" nullable="true" comment="Transaction Status"/>
+        <column name="created_at" xsi:type="timestamp" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column name="updated_at" xsi:type="timestamp" nullable="true" default="CURRENT_TIMESTAMP" on_update="true" comment="Transactions Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+    <table name="digital_gold_record" resource="default" engine="innodb" comment="Digital Gold Record">
+        <column name="entity_id" xsi:type="int" nullable="false" identity="true" unsigned="true" comment="Entity Id"/>
+        <column name="customer_id" xsi:type="int" nullable="false" unsigned="true" comment="Customer ID"/>
+        <column name="product_id" xsi:type="int" nullable="false" unsigned="true" comment="Product ID"/>
+        <column name="total_gold" xsi:type="decimal" precision="12" scale="4" nullable="false" default="0.0000" comment="Total Gold"/>
+        <column name="used_gold" xsi:type="decimal" precision="12" scale="4" nullable="false" default="0.0000" comment="Used Gold"/>
+        <column name="remaining_gold" xsi:type="decimal" precision="12" scale="4" nullable="false" default="0.0000" comment="Remaining Gold"/>
+        <column name="created_at" xsi:type="timestamp" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column name="updated_at" xsi:type="timestamp" nullable="true" default="CURRENT_TIMESTAMP" on_update="true" comment="Record Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+     <table name="digital_gold_sell_request" resource="default" engine="innodb" comment="Sell Digital Gold Requests">
+        <column name="entity_id" xsi:type="int" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column name="customer_id" xsi:type="int" unsigned="true" nullable="false" comment="Customer ID"/>
+        <column name="product_id" xsi:type="int" nullable="false" unsigned="true" comment="Product ID"/>
+        <column name="transaction_id" xsi:type="int" unsigned="true" nullable="false" comment="Transaction ID"/>
+        <column name="gold_quantity" xsi:type="decimal" precision="12" scale="4" nullable="false" comment="Gold Quantity"/>
+        <column name="amount_requested" xsi:type="decimal" precision="12" scale="2" nullable="false" comment="Requested Amount"/>
+        <column name="status" xsi:type="text" nullable="false" comment="Request Status (Pending, Approved, Rejected)"/>
+        <column name="created_at" xsi:type="timestamp" nullable="false" default="CURRENT_TIMESTAMP" comment="Request Created Time"/>
+        <column name="updated_at" xsi:type="timestamp" nullable="true" default="CURRENT_TIMESTAMP" on_update="true" comment="Request Updated Time"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+</schema>

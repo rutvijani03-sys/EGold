@@ -1,0 +1,69 @@
+<?php
+$goldData = $block->getGoldData();
+$records = $goldData['record'];
+$transactions = $goldData['transactions'];
+?>
+
+<div class="digi-gold-head">
+    <div class="heder-detail">
+        <h4>Digital Gold Details</h4>
+        <h3><?php echo $records[0]['remaining_gold']?>(grm)</h3>
+        <span>Your Digital Gold Balance</span>
+    </div>
+    <div class="heder-sub">
+        <button id="sell-digital-gold" type="button" class="action primary">
+            Sell Digital Gold
+        </button>
+    </div>
+</div>
+
+
+<div class="gold-record">
+    <h4>Gold Record</h4>
+    <table>
+        <tr>
+            <th>Total Gold</th>
+            <th>Used Gold</th>
+            <th>Remaining Gold</th>
+        </tr>
+        <?php foreach ($records as $record): ?>
+            <tr>
+                <td><?= $record['total_gold'] ?> grm</td>
+                <td><?= $record['used_gold'] ?> grm</td>
+                <td><?= $record['remaining_gold'] ?> grm</td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+<div class="transaction">
+    <h4>Transaction History</h4>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Order ID</th>
+            <th>Transaction Note</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Created At</th>
+        </tr>
+        <?php foreach ($transactions as $transaction): ?>
+            <tr>
+                <td><?= $transaction['amount'] ?></td>
+                <td><?= $transaction['quantity'] ?> grm</td>
+                <td><?= $transaction['order_id'] ?></td>
+                <td><?= $transaction['transaction_note'] ?></td>
+                <td><?= $transaction['status'] ?></td>
+                <td><?= $transaction['action'] ?></td>
+                <td><?= $transaction['created_at'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+<script type="text/javascript">
+    require(['jquery'], function($) {
+        $('#sell-digital-gold').click(function() {
+            window.location.href = '<?= $block->getUrl("digitalgold/sellgold") ?>';
+        });
+    });
+</script>

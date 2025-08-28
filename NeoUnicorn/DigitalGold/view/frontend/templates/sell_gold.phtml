@@ -1,0 +1,17 @@
+<?php
+$goldData = $block->getGoldData();
+$records = $goldData['record'];
+?>
+
+<div class="gold">
+    <h4>Remaining Gold :</h4>
+    <?php foreach ($records as $record): ?>
+        <span><?= $this->escapeHtml($record['remaining_gold']) ?> grm</span>
+    <?php endforeach; ?>
+</div>
+
+<form action="<?= $block->getUrl('digitalgold/Request/sellgold') ?>" method="post">
+    <label for="gold_quantity">Gold Quantity to Sell :</label>
+    <input type="text" name="gold_quantity" id="gold_quantity" required>
+    <button type="submit" class="btn-golden">Request Sell</button>
+</form>

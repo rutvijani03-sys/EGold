@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove unnecessary product info blocks -->
+        <referenceContainer name="product.info.price" remove="true"/>
+        <referenceContainer name="product.info.media" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceBlock name="product.info.review" remove="true"/>
+        <referenceBlock name="view.addto.wishlist" remove="true"/>
+        <referenceBlock name="store_pincode" remove="true"/>
+        <referenceBlock name="product.reviews.wrapper" remove="true"/>
+        <referenceBlock name="product.attributes.wrapper" remove="true"/>
+        <referenceBlock name="product.info.addto" remove="true"/>
+        
+      
+        <!-- Only your custom block remains -->
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="buy.gold.custom.block"
+                   template="NeoUnicorn_DigitalGold::buy_gold.phtml" before="-"/>
+            
+            <block class="Magento\Framework\View\Element\Template"
+                   name="gold.purity.custom.block"
+                   template="NeoUnicorn_DigitalGold::gold_purity.phtml"/>     
+        </referenceContainer>
+        <move element="gold.purity.custom.block" destination="product.info.main" after="product_options_wrapper_bottom" />
+    </body>
+</page>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+   <event name="checkout_submit_all_after">
+       <observer name="digital_gold_purchase_observer" instance="NeoUnicorn\DigitalGold\Observer\SavePurchaseData" />
+   </event>
+
+   <event name="sales_order_invoice_pay">
+       <observer name="digital_gold_payment_observer" instance="NeoUnicorn\DigitalGold\Observer\AfterInvoicePay" />
+    </event>
+
+</config>
